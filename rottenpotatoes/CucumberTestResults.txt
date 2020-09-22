@@ -21,13 +21,32 @@ Feature: display list of movies filtered by MPAA rating
     [32mThen [32m[1m10[0m[0m[32m seed movies should exist[90m             # features/step_definitions/movie_steps.rb:11[0m[0m
 
   Scenario: restrict to movies with 'PG' or 'R' ratings[90m # features/filter_movie_list.feature:25[0m
+    [32mGiven I am on [32m[1mthe home page[0m[0m[32m[90m                         # features/step_definitions/web_steps.rb:44[0m[0m
+      # enter step(s) to check the 'PG' and 'R' checkboxes
+    [32mWhen I check the following ratings: [32m[1mPG, R[0m[0m[32m[90m           # features/step_definitions/movie_steps.rb:28[0m[0m
+      # enter step(s) to uncheck all other checkboxes
+    [32mAnd I [32m[1mun[0m[0m[32mcheck the following ratings: [32m[1mPG-13, G[0m[0m[32m[90m       # features/step_definitions/movie_steps.rb:28[0m[0m
+      # enter step to "submit" the search form on the homepage
+    [32mAnd I press "[32m[1mRefresh[0m[0m[32m"[90m                               # features/step_definitions/web_steps.rb:52[0m[0m
+      # enter step(s) to ensure that PG and R movies are visible
+    [32mThen I should see "[32m[1mThe Terminator[0m[0m[32m"[90m                  # features/step_definitions/web_steps.rb:105[0m[0m
+    [32mThen I should see "[32m[1mWhen Harry Met Sally[0m[0m[32m"[90m            # features/step_definitions/web_steps.rb:105[0m[0m
+    [32mThen I should see "[32m[1mAmelie[0m[0m[32m"[90m                          # features/step_definitions/web_steps.rb:105[0m[0m
+    [32mThen I should see "[32m[1mThe Incredibles[0m[0m[32m"[90m                 # features/step_definitions/web_steps.rb:105[0m[0m
+    [32mThen I should see "[32m[1mRaiders of the Lost Ark[0m[0m[32m"[90m         # features/step_definitions/web_steps.rb:105[0m[0m
+      # enter step(s) to ensure that other movies are not visible
+    [32mAnd I should not see "[32m[1mAladdin[0m[0m[32m"[90m                      # features/step_definitions/web_steps.rb:123[0m[0m
+    [32mAnd I should not see "[32m[1mThe Help[0m[0m[32m"[90m                     # features/step_definitions/web_steps.rb:123[0m[0m
+    [32mAnd I should not see "[32m[1mChocolat[0m[0m[32m"[90m                     # features/step_definitions/web_steps.rb:123[0m[0m
+    [32mAnd I should not see "[32m[1m2001: A Space Odyssey[0m[0m[32m"[90m        # features/step_definitions/web_steps.rb:123[0m[0m
+    [32mAnd I should not see "[32m[1mChicken Run[0m[0m[32m"[90m                  # features/step_definitions/web_steps.rb:123[0m[0m
 
-  # enter step(s) to check the 'PG' and 'R' checkboxes
-  # enter step(s) to uncheck all other checkboxes
-  # enter step to "submit" the search form on the homepage
-  # enter step(s) to ensure that PG and R movies are visible
-  # enter step(s) to ensure that other movies are not visible
-  Scenario: all ratings selected[90m # features/filter_movie_list.feature:32[0m
+  Scenario: all ratings selected[90m                        # features/filter_movie_list.feature:46[0m
+      # see assignment
+    [32mGiven I am on [32m[1mthe home page[0m[0m[32m[90m                         # features/step_definitions/web_steps.rb:44[0m[0m
+    [32mWhen I check the following ratings: [32m[1mPG, R, PG-13, G[0m[0m[32m[90m # features/step_definitions/movie_steps.rb:28[0m[0m
+    [32mAnd I press "[32m[1mRefresh[0m[0m[32m"[90m                               # features/step_definitions/web_steps.rb:52[0m[0m
+    [32mThen I should see all the movies[90m                    # features/step_definitions/movie_steps.rb:41[0m[0m
 
 Feature: display list of movies sorted by different criteria
   As an avid moviegoer
@@ -58,5 +77,5 @@ Feature: display list of movies sorted by different criteria
     [32mWhen I follow "[32m[1mRelease Date[0m[0m[32m"[90m                            # features/step_definitions/web_steps.rb:56[0m[0m
 
 4 scenarios ([32m4 passed[0m)
-14 steps ([32m14 passed[0m)
-0m0.378s
+32 steps ([32m32 passed[0m)
+0m0.459s

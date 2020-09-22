@@ -31,14 +31,14 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
   rating_list.split(', ').each do |rating|
     if uncheck
-      step %(I uncheck "ratings[#{rating}]")
+      step %(uncheck "ratings[#{rating}]")
     else
-      step %(I check "ratings[#{rating}]")
+      step %(check "ratings[#{rating}]")
     end 
   end 
 end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  page.should have_selector('movies tr', count:11)
+  expect(page).to have_xpath("//tr", count:11)
 end
