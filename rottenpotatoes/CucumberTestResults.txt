@@ -44,8 +44,11 @@ Feature: display list of movies filtered by MPAA rating
   Scenario: all ratings selected[90m                        # features/filter_movie_list.feature:46[0m
       # see assignment
     [32mGiven I am on [32m[1mthe home page[0m[0m[32m[90m                         # features/step_definitions/web_steps.rb:44[0m[0m
+      #Check off all ratings --> all movies should show
     [32mWhen I check the following ratings: [32m[1mPG, R, PG-13, G[0m[0m[32m[90m # features/step_definitions/movie_steps.rb:28[0m[0m
+      #submit the search form on the homepage
     [32mAnd I press "[32m[1mRefresh[0m[0m[32m"[90m                               # features/step_definitions/web_steps.rb:52[0m[0m
+      #verify all movies are present (count = 11)
     [32mThen I should see all the movies[90m                    # features/step_definitions/movie_steps.rb:41[0m[0m
 
 Feature: display list of movies sorted by different criteria
@@ -69,13 +72,14 @@ Feature: display list of movies sorted by different criteria
     [32mAnd I am on [32m[1mthe RottenPotatoes home page[0m[0m[32m[90m     # features/step_definitions/web_steps.rb:44[0m[0m
     [32mThen [32m[1m10[0m[0m[32m seed movies should exist[90m             # features/step_definitions/movie_steps.rb:11[0m[0m
 
-  Scenario: sort movies alphabetically[90m # features/sort_movie_list.feature:25[0m
-    [32mWhen I follow "[32m[1mMovie Title[0m[0m[32m"[90m        # features/step_definitions/web_steps.rb:56[0m[0m
+  Scenario: sort movies alphabetically[90m          # features/sort_movie_list.feature:25[0m
+    [32mWhen I follow "[32m[1mMovie Title[0m[0m[32m"[90m                 # features/step_definitions/web_steps.rb:56[0m[0m
+    [32mThen I should see "[32m[1mAladdin[0m[0m[32m" before "[32m[1mAmelie[0m[0m[32m"[90m # features/step_definitions/movie_steps.rb:18[0m[0m
 
-  # your steps here
-  Scenario: sort movies in increasing order of release date[90m # features/sort_movie_list.feature:29[0m
-    [32mWhen I follow "[32m[1mRelease Date[0m[0m[32m"[90m                            # features/step_definitions/web_steps.rb:56[0m[0m
+  Scenario: sort movies in increasing order of release date[90m     # features/sort_movie_list.feature:29[0m
+    [32mWhen I follow "[32m[1mRelease Date[0m[0m[32m"[90m                                # features/step_definitions/web_steps.rb:56[0m[0m
+    [32mThen I should see "[32m[1m2001: A Space Odyssey[0m[0m[32m" before "[32m[1mChocolat[0m[0m[32m"[90m # features/step_definitions/movie_steps.rb:18[0m[0m
 
 4 scenarios ([32m4 passed[0m)
-32 steps ([32m32 passed[0m)
-0m0.459s
+34 steps ([32m34 passed[0m)
+0m0.467s

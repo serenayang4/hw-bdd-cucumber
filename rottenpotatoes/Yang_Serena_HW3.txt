@@ -44,8 +44,11 @@ Feature: display list of movies filtered by MPAA rating
   Scenario: all ratings selected                        # features/filter_movie_list.feature:46
       # see assignment
     Given I am on the home page                         # features/step_definitions/web_steps.rb:44
+      #Check off all ratings --> all movies should show
     When I check the following ratings: PG, R, PG-13, G # features/step_definitions/movie_steps.rb:28
+      #submit the search form on the homepage
     And I press "Refresh"                               # features/step_definitions/web_steps.rb:52
+      #verify all movies are present (count = 11)
     Then I should see all the movies                    # features/step_definitions/movie_steps.rb:41
 
 Feature: display list of movies sorted by different criteria
@@ -69,13 +72,14 @@ Feature: display list of movies sorted by different criteria
     And I am on the RottenPotatoes home page     # features/step_definitions/web_steps.rb:44
     Then 10 seed movies should exist             # features/step_definitions/movie_steps.rb:11
 
-  Scenario: sort movies alphabetically # features/sort_movie_list.feature:25
-    When I follow "Movie Title"        # features/step_definitions/web_steps.rb:56
+  Scenario: sort movies alphabetically          # features/sort_movie_list.feature:25
+    When I follow "Movie Title"                 # features/step_definitions/web_steps.rb:56
+    Then I should see "Aladdin" before "Amelie" # features/step_definitions/movie_steps.rb:18
 
-  # your steps here
-  Scenario: sort movies in increasing order of release date # features/sort_movie_list.feature:29
-    When I follow "Release Date"                            # features/step_definitions/web_steps.rb:56
+  Scenario: sort movies in increasing order of release date     # features/sort_movie_list.feature:29
+    When I follow "Release Date"                                # features/step_definitions/web_steps.rb:56
+    Then I should see "2001: A Space Odyssey" before "Chocolat" # features/step_definitions/movie_steps.rb:18
 
 4 scenarios (4 passed)
-32 steps (32 passed)
-0m0.394s
+34 steps (34 passed)
+0m0.403s
